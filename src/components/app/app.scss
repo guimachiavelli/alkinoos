@@ -1,0 +1,75 @@
+@import './globals.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Baskerville'
+}
+
+ol {
+    margin-bottom: 2em;
+    list-style: none;
+}
+
+input,
+textarea {
+    margin-left: 0.5em;
+    padding: 0.25em 0;
+    display: inline-block;
+    border: 0;
+    border-bottom: 2px solid whitesmoke;
+    box-sizing: border-box;
+    font-size: medium;
+
+    &:active,
+    &:focus {
+        outline: 0;
+        -webkit-appearance: none;
+        border-bottom: 2px solid black;
+    }
+}
+
+textarea {
+    margin-left: 0;
+    border: 2px solid whitesmoke;
+
+    &:active,
+    &:focus {
+        border: 2px solid black;
+    }
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+button {
+    -webkit-appearance: none;
+    border: none;
+    padding: 0.5em;
+}
+
+.app {
+    margin: 1em;
+}
+
+.menu {
+    display: none;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+}
+
+.content__second-column {
+    overflow: hidden;
+}
+
+.content__full-column {
+    grid-column-start: 2;
+}

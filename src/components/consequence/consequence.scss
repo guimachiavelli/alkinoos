@@ -1,0 +1,39 @@
+.consequence {
+    counter-increment: consequence;
+}
+
+.consequence__header {
+    margin-bottom: 1em;
+
+    &::before {
+        content: 'Outcome #' counter(consequence) ' ';
+    }
+}
+
+.consequence__components {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.consequence__component {
+    margin-bottom: 2em;
+    grid-column-start: span 2;
+}
+
+.consequence__component--full {
+    grid-column-start: span 4;
+}
+
+.narration {
+}
+
+.narration__title {
+    font-size: medium;
+    margin-bottom: 0.5em;
+}
+
+.narration__textarea {
+    width: 100%;
+    height: 250px;
+    font-size: medium;
+}

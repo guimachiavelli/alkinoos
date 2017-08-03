@@ -1,0 +1,16 @@
+.condition {
+    counter-increment: condition;
+}
+
+.condition__header {
+    margin-bottom: 0.5em;
+
+    &::before {
+        font-size: small;
+        content: 'Condition #' counter(condition) ' ';
+    }
+}
+
+.condition__label {
+    font-size: small;
+}

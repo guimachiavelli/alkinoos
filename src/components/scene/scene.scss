@@ -1,0 +1,33 @@
+.scene {
+    counter-increment: scene;
+    list-style: none;
+}
+
+.scene__label {
+}
+
+.scene__label-text {
+    font-size: medium;
+    display: inline-block;
+    display: none;
+}
+
+.scene__input {
+    display: inline-block;
+    border: 0;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+    font-size: medium;
+    margin: 0;
+
+    &:active,
+    &:focus {
+        outline: 0;
+        -webkit-appearance: none;
+        border-bottom: 2px solid black;
+    }
+}
+
+.scene__input--filled {
+    border-bottom: 2px solid whitesmoke;
+}

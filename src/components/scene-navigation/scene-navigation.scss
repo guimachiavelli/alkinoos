@@ -1,0 +1,28 @@
+.scene-navigation {
+    width: 100%;
+}
+
+.scene-navigation__list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+}
+
+.scene-navigation__item {
+    margin-right: 2em;
+    flex: 0 0 auto;
+
+    button {
+        display: block;
+        height: 70px;
+        width: 100px;
+        border: 1px solid black;
+        text-decoration: none;
+        color: black;
+    }
+}
+
+.scene-navigation__button {
+    height: 70px;
+    width: 100px;
+}
