@@ -16,6 +16,7 @@ class Scene extends React.Component {
       id: this.props.id,
       name: this.props.name,
       consequences: updatedConsequences,
+      selected: this.props.selected,
     };
 
     this.props.onUpdate(updatedScene);
@@ -26,6 +27,7 @@ class Scene extends React.Component {
       id: this.props.id,
       name: event.target.value,
       consequences: this.props.consequences,
+      selected: this.props.selected,
     };
 
     this.props.onUpdate(updatedScene);
@@ -38,7 +40,7 @@ class Scene extends React.Component {
   render() {
 
     return (
-      <li className="scene">
+      <div className="scene">
         <label htmlFor="name" className="scene__label">
           <span className="scene__label-text">Scene Title</span>
           <input
@@ -54,8 +56,10 @@ class Scene extends React.Component {
         <Consequences
           consequences={this.props.consequences}
           stats={this.props.stats}
+          breadcrumb={this.props.breadcrumb}
           sceneList={this.props.sceneList}
           onUpdate={this.handleUpdate}
+          onNavigationUpdate={this.props.onNavigationUpdate}
         />
 
         <button
@@ -64,7 +68,7 @@ class Scene extends React.Component {
         >
           Delete scene
         </button>
-      </li>
+      </div>
     );
   }
 }

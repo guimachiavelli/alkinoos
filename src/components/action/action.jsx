@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './action.scss';
+
 import Consequences from '../consequences/consequences';
 
 class Action extends React.Component {
@@ -15,6 +17,7 @@ class Action extends React.Component {
       id: this.props.id,
       name: this.props.name,
       consequences: updatedConsequences,
+      selected: this.props.selected,
     };
 
     this.props.onUpdate(updatedAction);
@@ -29,6 +32,7 @@ class Action extends React.Component {
       id: this.props.id,
       name: event.target.value,
       consequences: this.props.consequences,
+      selected: this.props.selected,
     };
 
     this.props.onUpdate(updatedAction);
@@ -37,23 +41,27 @@ class Action extends React.Component {
   render() {
     return (
       <li className="action">
-        <label>
-          Action Title
-          <input type="text" onChange={this.handleTitleChange} value={this.props.name} />
-        </label>
+        <div className="action__header">
+          <label>
+            Action Title
+            <input type="text" onChange={this.handleTitleChange} value={this.props.name} />
+          </label>
+
+          <button
+            onClick={this.handleDelete}
+          >
+            Delete action
+          </button>
+        </div>
 
         <Consequences
           consequences={this.props.consequences}
           stats={this.props.stats}
           sceneList={this.props.sceneList}
+          breadcrumb={this.props.breadcrumb}
           onUpdate={this.handleUpdate}
+          onNavigationUpdate={this.props.onNavigationUpdate}
         />
-
-        <button
-          onClick={this.handleDelete}
-        >
-          Delete action
-        </button>
 
       </li>
     );

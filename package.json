@@ -32,8 +32,11 @@
   },
   "dependencies": {
     "babel-runtime": "^6.23.0",
+    "lodash.throttle": "^4.1.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-sticky": "^6.0.1",
+    "react-visibility-sensor": "^3.10.1"
   }
 }

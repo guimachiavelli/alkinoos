@@ -23,6 +23,7 @@ class Consequence extends React.Component {
       conditions: this.props.conditions,
       effects: this.props.effects,
       text: this.props.text,
+      selected: this.props.selected,
     };
 
     this.props.onUpdate(updatedConsequence);
@@ -35,6 +36,7 @@ class Consequence extends React.Component {
       conditions: updatedConditions,
       effects: this.props.effects,
       text: this.props.text,
+      selected: this.props.selected,
     };
 
     this.props.onUpdate(updatedConsequence);
@@ -47,6 +49,7 @@ class Consequence extends React.Component {
       conditions: this.props.conditions,
       effects: updatedEffects,
       text: this.props.text,
+      selected: this.props.selected,
     };
 
     this.props.onUpdate(updatedConsequence);
@@ -60,6 +63,7 @@ class Consequence extends React.Component {
       conditions: this.props.conditions,
       effects: this.props.effects,
       text: this.props.text,
+      selected: this.props.selected,
     };
 
     updatedConsequence[event.target.name] = textArray;
@@ -118,8 +122,10 @@ class Consequence extends React.Component {
             <Actions
               actions={this.props.actions}
               stats={this.props.stats}
+              breadcrumb={this.props.breadcrumb}
               sceneList={this.props.sceneList}
               onUpdate={this.handleUpdate}
+              onNavigationUpdate={this.props.onNavigationUpdate}
             />
           </div>
         </div>

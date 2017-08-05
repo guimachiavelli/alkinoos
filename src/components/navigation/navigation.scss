@@ -1,0 +1,32 @@
+.navigation {
+    width: 100%;
+}
+
+.navigation__list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+}
+
+.navigation__item {
+    margin-right: 2em;
+    flex: 0 0 auto;
+
+    button {
+        display: block;
+        height: 70px;
+        width: 100px;
+        border: 1px solid black;
+        text-decoration: none;
+        color: black;
+    }
+}
+
+.navigation__button {
+    height: 70px;
+    width: 100px;
+}
+
+.navigation__button--selected {
+    background: coral;
+}

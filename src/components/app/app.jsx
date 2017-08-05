@@ -16,15 +16,12 @@ class App extends React.Component {
         stats: [],
       },
       scenes: [],
-      selectedScene: null,
     };
 
     this.handleUpload = this.handleUpload.bind(this);
 
     this.handleSceneUpdate = this.handleSceneUpdate.bind(this);
     this.handleSettingsUpdate = this.handleSettingsUpdate.bind(this);
-
-    this.handleSelect = this.handleSelect.bind(this);
   }
 
   componentWillMount() {
@@ -45,10 +42,6 @@ class App extends React.Component {
 
   handleSceneUpdate(scenes) {
     this.setState({ scenes });
-  }
-
-  handleSelect(target) {
-    this.setState({ selectedScene: target });
   }
 
   render() {

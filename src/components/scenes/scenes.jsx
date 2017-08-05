@@ -1,8 +1,10 @@
 import React from 'react';
 
 import './scenes.scss';
+
 import Scene from '../scene/scene';
-import SceneNavigation from '../scene-navigation/scene-navigation';
+import Navigation from '../navigation/navigation';
+import Breadcrumb from '../breadcrumb/breadcrumb';
 
 class Scenes extends React.Component {
   constructor() {
@@ -11,6 +13,12 @@ class Scenes extends React.Component {
     this.handleSceneUpdate = this.handleSceneUpdate.bind(this);
     this.handleSceneDelete = this.handleSceneDelete.bind(this);
     this.handleSceneSelect = this.handleSceneSelect.bind(this);
+
+    this.handleBreadcrumbUpdate = this.handleBreadcrumbUpdate.bind(this);
+
+    this.state = {
+      breadcrumb: [],
+    };
   }
 
   handleSceneAdd() {
@@ -42,34 +50,66 @@ class Scenes extends React.Component {
   }
 
   handleSceneSelect(id) {
-    this.props.onSceneSelect(id);
+    let scenes = this.props.scenes.slice();
+    scenes = scenes.map((scene) => {
+      const newScene = scene;
+      newScene.selected = scene.id === id;
+      return newScene;
+    });
+
+    this.props.onUpdate(scenes);
+  }
+
+  handleBreadcrumbUpdate(item, isVisible) {
+    this.setState((prevState) => {
+      const breadcrumb = prevState.breadcrumb;
+      const index = breadcrumb.findIndex(crumb => crumb.id === item.id);
+
+      if (isVisible && index < 0) {
+        breadcrumb.push(item);
+      }
+
+      if (!isVisible && index > -1) {
+        //console.log('first: ' + breadcrumb[0].name);
+        //console.log('according to index: ' + breadcrumb[index].name);
+        //console.log('item: ' + item.name);
+        breadcrumb.splice(index, 1);
+      }
+
+      return { breadcrumb };
+    });
   }
 
   render() {
     const sceneList = this.props.scenes.map(scene =>
-      ({ id: scene.id, name: scene.name }),
+      ({ id: scene.id, name: scene.name, selected: scene.selected }),
     );
 
-    const scene = this.props.scenes.find(scene => scene.id === this.props.selectedScene);
+    const scene = this.props.scenes.find(scene => scene.selected === true);
 
     return (
       <div className="scenes">
-        <SceneNavigation
-          scenes={this.props.scenes}
-          selectedScene={this.props.selectedScene}
-          onSceneSelect={this.handleSceneSelect}
-          onSceneAdd={this.handleSceneAdd}
+        <Breadcrumb text={this.state.breadcrumb} />
+        <Navigation
+          items={sceneList}
+          selected={scene.id}
+          onSelect={this.handleSceneSelect}
+          onAdd={this.handleSceneAdd}
+          onScroll={this.handleBreadcrumbUpdate}
         />
         <div className="scenes__container">
-          { scene &&
+          {scene &&
           <Scene
             id={scene.id}
             name={scene.name}
             sceneList={sceneList}
+            selected={scene.selected}
             consequences={scene.consequences}
             stats={this.props.stats}
+            breadcrumb={this.state.breadcrumb}
             onUpdate={this.handleSceneUpdate}
             onDelete={this.handleSceneDelete}
+            onNavigationUpdate={this.handleBreadcrumbUpdate}
           />
           }
         </div>
