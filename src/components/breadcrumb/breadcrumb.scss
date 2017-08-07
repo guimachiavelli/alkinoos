@@ -1,8 +1,16 @@
 .breadcrumb {
     position: fixed;
     top: 0;
-    width: 75%;
+    width: 70%;
     right: 0;
     background: white;
     padding: 0.5em 0;
+}
+
+.breadcrumb__text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    direction: rtl;
 }

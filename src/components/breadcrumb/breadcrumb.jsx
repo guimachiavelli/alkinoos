@@ -12,7 +12,7 @@ class Breadcrumb extends React.Component {
     text = text.join(' > ');
     return (
       <div className="breadcrumb">
-        {text}
+        <p className="breadcrumb__text">{text}</p>
       </div>
     );
   }

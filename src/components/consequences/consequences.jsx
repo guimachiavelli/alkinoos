@@ -72,7 +72,7 @@ class Consequences extends React.Component {
       } else if (consequence.conditions[0].type === 'stat') {
         name = `If ${consequence.conditions[0].stat} ${consequence.conditions[0].operator} ${consequence.conditions[0].value}`;
       } else if (consequence.conditions[0].type === 'flag') {
-        name = `If player has '${consequence.conditions[0].value}'`;
+        name = `If player has ${consequence.conditions[0].value}`;
       }
 
       return {
