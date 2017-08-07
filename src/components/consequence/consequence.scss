@@ -4,10 +4,6 @@
 
 .consequence__header {
     margin-bottom: 1em;
-
-    &::before {
-        content: 'Outcome #' counter(consequence) ' ';
-    }
 }
 
 .consequence__components {

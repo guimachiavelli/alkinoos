@@ -69,34 +69,31 @@ class Actions extends React.Component {
     return (
       <div className="actions">
         <div className="actions__header">
-          <h3>Actions</h3>
+          <Navigation
+            items={this.props.actions}
+            title="Actions possible"
+            selected={action && action.selected}
+            onSelect={this.handleActionSelect}
+            onAdd={this.handleActionAdd}
+            onScroll={this.handleNavigationUpdate}
+          />
         </div>
 
-        <Navigation
-          items={this.props.actions}
-          selected={action && action.selected}
-          onSelect={this.handleActionSelect}
-          onAdd={this.handleActionAdd}
-          onScroll={this.handleNavigationUpdate}
+        {action &&
+        <Action
+          key={action.id}
+          id={action.id}
+          name={action.name}
+          consequences={action.consequences}
+          selected={action.selected}
+          stats={this.props.stats}
+          breadcrumb={this.props.breadcrumb}
+          sceneList={this.props.sceneList}
+          onUpdate={this.handleActionUpdate}
+          onDelete={this.handleActionDelete}
+          onNavigationUpdate={this.handleNavigationUpdate}
         />
-
-        <ol className="actions__list">
-          { action &&
-          <Action
-            key={action.id}
-            id={action.id}
-            name={action.name}
-            consequences={action.consequences}
-            selected={action.selected}
-            stats={this.props.stats}
-            breadcrumb={this.props.breadcrumb}
-            sceneList={this.props.sceneList}
-            onUpdate={this.handleActionUpdate}
-            onDelete={this.handleActionDelete}
-            onNavigationUpdate={this.handleNavigationUpdate}
-          />
-          }
-        </ol>
+        }
       </div>
     );
   }

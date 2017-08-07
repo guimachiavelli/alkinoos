@@ -84,15 +84,17 @@ class Consequences extends React.Component {
 
     return (
       <div className="consequences">
-        <h3 className="consequences__title">Possible outcomes</h3>
 
-        <Navigation
-          items={consequenceList}
-          selected={consequence && consequence.id}
-          onSelect={this.handleConsequenceSelect}
-          onAdd={this.handleConsequenceAdd}
-          onScroll={this.handleNavigationUpdate}
-        />
+        <div className="consequences__header">
+          <Navigation
+            items={consequenceList}
+            title={this.props.navigationTitle}
+            selected={consequence && consequence.id}
+            onSelect={this.handleConsequenceSelect}
+            onAdd={this.handleConsequenceAdd}
+            onScroll={this.handleNavigationUpdate}
+          />
+        </div>
 
         <ol className="consequences__list">
           {consequence &&

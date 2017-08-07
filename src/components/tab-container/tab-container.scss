@@ -5,7 +5,13 @@
 .tab-title {
     display: inline-block;
     border: 1px solid black;
+    border-bottom: 0;
+    border-right: 0;
     padding: 0.25em;
+
+    &:last-child {
+        border-right: 1px solid black;
+    }
 }
 
 .tab-title__active {
@@ -13,11 +19,11 @@
 }
 
 .tab {
-    border: 1px solid black;
 }
 
 .tab__content {
     display: none;
+    border: 1px solid black;
 
     .tab__radio:checked + & {
         display: block;

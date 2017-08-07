@@ -1,8 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './action.scss';
 
 import Consequences from '../consequences/consequences';
+
+import { statTypes } from '../stat/stat';
+import { consequenceTypes } from '../consequence/consequence';
 
 class Action extends React.Component {
   constructor() {
@@ -39,12 +43,19 @@ class Action extends React.Component {
   }
 
   render() {
+    const titleID = `${this.props.id}-title`;
+
     return (
-      <li className="action">
+      <div className="action">
         <div className="action__header">
-          <label>
+          <label htmlFor={titleID}>
             Action Title
-            <input type="text" onChange={this.handleTitleChange} value={this.props.name} />
+            <input
+              type="text"
+              onChange={this.handleTitleChange}
+              id={titleID}
+              value={this.props.name}
+            />
           </label>
 
           <button
@@ -55,6 +66,7 @@ class Action extends React.Component {
         </div>
 
         <Consequences
+          navigationTitle={`Consequences of "${this.props.name}" action`}
           consequences={this.props.consequences}
           stats={this.props.stats}
           sceneList={this.props.sceneList}
@@ -63,9 +75,34 @@ class Action extends React.Component {
           onNavigationUpdate={this.props.onNavigationUpdate}
         />
 
-      </li>
+      </div>
     );
   }
 }
+
+Action.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  consequences: PropTypes.arrayOf(
+    PropTypes.shape({ consequenceTypes }),
+  ).isRequired,
+  selected: PropTypes.bool.isRequired,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape(statTypes),
+  ).isRequired,
+  breadcrumb: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    selected: PropTypes.bool,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+  sceneList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    selected: PropTypes.bool,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onNavigationUpdate: PropTypes.func.isRequired,
+};
 
 export default Action;

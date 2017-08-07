@@ -19,9 +19,14 @@ class TabContainer extends React.Component {
   render() {
     const tabTitles = this.props.children.map((child, index) => {
       const id = `${this.props.id}-tab-${index}`;
+      let className = 'tab-title';
+      className += (this.state.active === id ? ' tab-title__active' : '');
 
       return (
-        <li className={'tab-title ' + (this.state.active === id ? 'tab-title__active' : '')}>
+        <li
+          key={id}
+          className={className}
+        >
           <label
             htmlFor={id}
             className="tab-title__label"
@@ -30,25 +35,26 @@ class TabContainer extends React.Component {
           </label>
         </li>
       );
-    }
+    },
     );
 
-    const tabElements = this.props.children.map((child, index) =>
-      (
-        <li className="tab">
+    const tabElements = this.props.children.map((child, index) => {
+      const id = `${this.props.id}-tab-${index}`;
+      return (
+        <li className="tab" key={id}>
           <input
             type="radio"
-            id={this.props.id + '-tab-' + index}
+            id={id}
             onChange={this.handleChange}
             className="tab__radio"
-            checked={this.state.active === this.props.id + '-tab-' + index}
+            checked={this.state.active === id}
           />
           <div className="tab__content">
             {child}
           </div>
         </li>
-      )
-    );
+      );
+    });
 
     return (
       <div className="tabs">

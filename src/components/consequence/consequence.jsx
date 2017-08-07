@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './consequence.scss';
 
@@ -119,4 +120,16 @@ class Consequence extends React.Component {
   }
 }
 
+Consequence.propTypes = {
+  id: PropTypes.number.isRequired,
+  selected: PropTypes.bool.isRequired,
+  actions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  conditions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  effects: PropTypes.arrayOf(PropTypes.object).isRequired,
+  text: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+const consequenceTypes = JSON.parse(JSON.stringify(Consequence.propTypes));
+
+export { consequenceTypes };
 export default Consequence;

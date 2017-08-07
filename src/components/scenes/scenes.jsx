@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+import clone from 'lodash.clone';
 
 import './scenes.scss';
 
-import Scene from '../scene/scene';
+import Scene, { sceneTypes } from '../scene/scene';
 import Navigation from '../navigation/navigation';
 import Breadcrumb from '../breadcrumb/breadcrumb';
 
@@ -70,9 +72,6 @@ class Scenes extends React.Component {
       }
 
       if (!isVisible && index > -1) {
-        //console.log('first: ' + breadcrumb[0].name);
-        //console.log('according to index: ' + breadcrumb[index].name);
-        //console.log('item: ' + item.name);
         breadcrumb.splice(index, 1);
       }
 
@@ -90,32 +89,44 @@ class Scenes extends React.Component {
     return (
       <div className="scenes">
         <Breadcrumb text={this.state.breadcrumb} />
-        <Navigation
-          items={sceneList}
-          selected={scene.id}
-          onSelect={this.handleSceneSelect}
-          onAdd={this.handleSceneAdd}
-          onScroll={this.handleBreadcrumbUpdate}
-        />
-        <div className="scenes__container">
-          {scene &&
-          <Scene
-            id={scene.id}
-            name={scene.name}
-            sceneList={sceneList}
-            selected={scene.selected}
-            consequences={scene.consequences}
-            stats={this.props.stats}
-            breadcrumb={this.state.breadcrumb}
-            onUpdate={this.handleSceneUpdate}
-            onDelete={this.handleSceneDelete}
-            onNavigationUpdate={this.handleBreadcrumbUpdate}
+
+        <div className="scenes__header">
+          <Navigation
+            items={this.props.scenes}
+            selected={scene.id}
+            title="Scenes"
+            onSelect={this.handleSceneSelect}
+            onAdd={this.handleSceneAdd}
+            onScroll={this.handleBreadcrumbUpdate}
           />
-          }
         </div>
+
+        {!scene &&
+        <p>Select a scene from the navigation menu above</p>
+        }
+
+        {scene &&
+        <Scene
+          id={scene.id}
+          name={scene.name}
+          sceneList={this.props.scenes}
+          selected={scene.selected}
+          consequences={scene.consequences}
+          stats={this.props.stats}
+          breadcrumb={this.state.breadcrumb}
+          onUpdate={this.handleSceneUpdate}
+          onDelete={this.handleSceneDelete}
+          onNavigationUpdate={this.handleBreadcrumbUpdate}
+        />
+        }
       </div>
     );
   }
 }
+
+Scenes.propTypes = {
+  scenes: PropTypes.arrayOf(PropTypes.shape(sceneTypes)).isRequired,
+
+};
 
 export default Scenes;

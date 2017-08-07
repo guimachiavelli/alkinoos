@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import clone from 'lodash.clone';
 
 class Stat extends React.Component {
   constructor() {
@@ -15,7 +17,13 @@ class Stat extends React.Component {
       max: this.props.max,
     };
 
-    stat[event.target.name] = event.target.value;
+    let { value, name } = event.target;
+
+    if (name === 'initial' || name === 'max') {
+      value = parseInt(value, 10);
+    }
+
+    stat[name] = value;
 
     this.props.onUpdate(stat);
   }
@@ -60,4 +68,21 @@ class Stat extends React.Component {
   }
 }
 
+Stat.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  initial: PropTypes.number.isRequired,
+  max: PropTypes.number,
+};
+
+const statTypes = clone(Stat.propTypes);
+
+Stat.propTypes.onUpdate = PropTypes.func.isRequired;
+Stat.propTypes.onDelete = PropTypes.func.isRequired;
+
+Stat.defaultProps = {
+  max: 0,
+};
+
+export { statTypes };
 export default Stat;

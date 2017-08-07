@@ -1,7 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import clone from 'lodash.clone';
 
 import './scene.scss';
 import Consequences from '../consequences/consequences';
+
+import { statTypes } from '../stat/stat';
+import { consequenceTypes } from '../consequence/consequence';
+import { breadcrumbTypes } from '../breadcrumb/breadcrumb';
 
 class Scene extends React.Component {
   constructor() {
@@ -54,6 +60,7 @@ class Scene extends React.Component {
         </label>
 
         <Consequences
+          navigationTitle={`Consequences of entering "${this.props.name}"`}
           consequences={this.props.consequences}
           stats={this.props.stats}
           breadcrumb={this.props.breadcrumb}
@@ -73,4 +80,25 @@ class Scene extends React.Component {
   }
 }
 
+Scene.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  selected: PropTypes.bool.isRequired,
+  consequences: PropTypes.arrayOf(
+    PropTypes.shape(consequenceTypes),
+  ).isRequired,
+};
+
+const sceneTypes = clone(Scene.propTypes);
+
+Scene.propTypes.onDelete = PropTypes.func.isRequired;
+Scene.propTypes.onUpdate = PropTypes.func.isRequired;
+Scene.propTypes.onNavigationUpdate = PropTypes.func.isRequired;
+Scene.propTypes.stats = PropTypes.arrayOf(PropTypes.shape(statTypes)).isRequired;
+Scene.propTypes.sceneList = PropTypes.arrayOf(PropTypes.object).isRequired,
+  //eslint-disable-next-line
+Scene.propTypes.breadcrumb = breadcrumbTypes.text;
+
+
+export { sceneTypes };
 export default Scene;
