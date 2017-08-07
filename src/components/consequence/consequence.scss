@@ -12,16 +12,16 @@
 
 .consequence__components {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    //grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .consequence__component {
     margin-bottom: 2em;
-    grid-column-start: span 2;
+    //grid-column-start: span 2;
 }
 
 .consequence__component--full {
-    grid-column-start: span 4;
+    //grid-column-start: span 4;
 }
 
 .narration {

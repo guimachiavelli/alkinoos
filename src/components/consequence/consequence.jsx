@@ -2,6 +2,8 @@ import React from 'react';
 
 import './consequence.scss';
 
+import TabContainer from '../tab-container/tab-container';
+import Narration from '../narration/narration';
 import Conditions from '../conditions/conditions';
 import Actions from '../actions/actions';
 import Effects from '../effects/effects';
@@ -55,18 +57,15 @@ class Consequence extends React.Component {
     this.props.onUpdate(updatedConsequence);
   }
 
-  handleUpdateText(event) {
-    const textArray = event.target.value.split('\n\n');
+  handleUpdateText(textArray) {
     const updatedConsequence = {
       id: this.props.id,
       actions: this.props.actions,
       conditions: this.props.conditions,
       effects: this.props.effects,
-      text: this.props.text,
+      text: textArray,
       selected: this.props.selected,
     };
-
-    updatedConsequence[event.target.name] = textArray;
 
     this.props.onUpdate(updatedConsequence);
   }
@@ -76,7 +75,7 @@ class Consequence extends React.Component {
   }
 
   render() {
-    const text = this.props.text.join('\n\n');
+
     return (
       <li className="consequence">
         <div className="consequence__header">
@@ -87,48 +86,34 @@ class Consequence extends React.Component {
           </button>
         </div>
 
-        <div className="consequence__components">
-          <div className="consequence__component consequence__component--full">
-            <div className="narration">
-              <h3 className="narration__title">Text</h3>
-              <textarea
-                placeholder="Narration text for this consequence"
-                className="narration__textarea"
-                name="text"
-                value={text}
-                onChange={this.handleUpdateText}
-              />
-            </div>
-          </div>
+        <TabContainer id={this.props.id}>
+          <Narration
+            text={this.props.text}
+            onChange={this.handleUpdateText}
+          />
 
-          <div className="consequence__component consequence__component--half">
-            <Conditions
-              conditions={this.props.conditions}
-              stats={this.props.stats}
-              onUpdate={this.handleUpdateConditions}
-            />
-          </div>
+          <Conditions
+            conditions={this.props.conditions}
+            stats={this.props.stats}
+            onUpdate={this.handleUpdateConditions}
+          />
 
-          <div className="consequence__component consequence__component--half">
-            <Effects
-              stats={this.props.stats}
-              effects={this.props.effects}
-              sceneList={this.props.sceneList}
-              onUpdate={this.handleUpdateEffects}
-            />
-          </div>
+          <Effects
+            stats={this.props.stats}
+            effects={this.props.effects}
+            sceneList={this.props.sceneList}
+            onUpdate={this.handleUpdateEffects}
+          />
+        </TabContainer>
 
-          <div className="consequence__component consequence__component--full">
-            <Actions
-              actions={this.props.actions}
-              stats={this.props.stats}
-              breadcrumb={this.props.breadcrumb}
-              sceneList={this.props.sceneList}
-              onUpdate={this.handleUpdate}
-              onNavigationUpdate={this.props.onNavigationUpdate}
-            />
-          </div>
-        </div>
+          <Actions
+            actions={this.props.actions}
+            stats={this.props.stats}
+            breadcrumb={this.props.breadcrumb}
+            sceneList={this.props.sceneList}
+            onUpdate={this.handleUpdate}
+            onNavigationUpdate={this.props.onNavigationUpdate}
+          />
       </li>
     );
   }

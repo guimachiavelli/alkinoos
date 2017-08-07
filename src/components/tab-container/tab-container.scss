@@ -1,0 +1,29 @@
+.tabs__index {
+    margin: 0;
+}
+
+.tab-title {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 0.25em;
+}
+
+.tab-title__active {
+    background: coral;
+}
+
+.tab {
+    border: 1px solid black;
+}
+
+.tab__content {
+    display: none;
+
+    .tab__radio:checked + & {
+        display: block;
+    }
+}
+
+.tab__radio {
+    display: none;
+}
