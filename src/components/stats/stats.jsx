@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import Stat from '../stat/stat';
+import Stat, { statTypes } from '../stat/stat';
 
 class Stats extends React.Component {
   constructor() {
@@ -40,8 +41,8 @@ class Stats extends React.Component {
   }
 
   render() {
-    const stats = this.props.stats.map((stat) => {
-      return (
+    const stats = this.props.stats.map(stat =>
+      (
         <Stat
           key={stat.id}
           id={stat.id}
@@ -50,8 +51,9 @@ class Stats extends React.Component {
           max={stat.max}
           onUpdate={this.handleStatUpdate}
           onDelete={this.handleStatDelete}
-        />);
-    });
+        />
+      ),
+    );
 
     return (
       <div className="stats">
@@ -64,5 +66,10 @@ class Stats extends React.Component {
     );
   }
 }
+
+Stats.propTypes = {
+  stats: PropTypes.arrayOf(PropTypes.shape(statTypes)).isRequired,
+  onUpdate: PropTypes.func.isRequired,
+};
 
 export default Stats;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './tab-container.scss';
 
@@ -6,7 +7,7 @@ class TabContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: props.id + '-tab-0',
+      active: `${props.id}-tab-0`,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -68,5 +69,10 @@ class TabContainer extends React.Component {
     );
   }
 }
+
+TabContainer.propTypes = {
+  id: PropTypes.number.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+};
 
 export default TabContainer;

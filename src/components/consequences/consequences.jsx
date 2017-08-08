@@ -1,9 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './consequences.scss';
 
 import Navigation from '../navigation/navigation';
-import Consequence from '../consequence/consequence';
+import Consequence, { consequenceTypes } from '../consequence/consequence';
+
+import { statTypes } from '../stat/stat';
+import { sceneTypes } from '../scene/scene';
+import { breadcrumbTypes } from '../breadcrumb/breadcrumb';
 
 class Consequences extends React.Component {
   constructor() {
@@ -24,7 +29,8 @@ class Consequences extends React.Component {
       text: [],
       actions: [],
       effects: [],
-      selected: this.props.selected,
+      stats: [],
+      breadcrumb: [],
     };
 
     consequences.push(consequence);
@@ -62,22 +68,22 @@ class Consequences extends React.Component {
   }
 
   render() {
-    const consequence = this.props.consequences.find(consequence => consequence.selected === true);
+    const consequence = this.props.consequences.find(c => c.selected === true);
 
-    const consequenceList = this.props.consequences.map((consequence) => {
+    const consequenceList = this.props.consequences.map((c) => {
       let name = 'Outcome';
 
-      if (consequence.conditions.length < 1 || consequence.conditions[0].type === 'default') {
+      if (c.conditions.length < 1 || c.conditions[0].type === 'default') {
         name = 'Default outcome';
-      } else if (consequence.conditions[0].type === 'stat') {
-        name = `If ${consequence.conditions[0].stat} ${consequence.conditions[0].operator} ${consequence.conditions[0].value}`;
-      } else if (consequence.conditions[0].type === 'flag') {
-        name = `If player has ${consequence.conditions[0].value}`;
+      } else if (c.conditions[0].type === 'stat') {
+        name = `If ${c.conditions[0].stat} ${c.conditions[0].operator} ${c.conditions[0].value}`;
+      } else if (c.conditions[0].type === 'flag') {
+        name = `If player has ${c.conditions[0].value}`;
       }
 
       return {
-        id: consequence.id,
-        selected: consequence.selected,
+        id: c.id,
+        selected: c.selected,
         name,
       };
     });
@@ -89,7 +95,6 @@ class Consequences extends React.Component {
           <Navigation
             items={consequenceList}
             title={this.props.navigationTitle}
-            selected={consequence && consequence.id}
             onSelect={this.handleConsequenceSelect}
             onAdd={this.handleConsequenceAdd}
             onScroll={this.handleNavigationUpdate}
@@ -108,7 +113,7 @@ class Consequences extends React.Component {
             effects={consequence.effects}
             breadcrumb={this.props.breadcrumb}
             stats={this.props.stats}
-            sceneList={this.props.sceneList}
+            scenes={this.props.scenes}
             onUpdate={this.handleConsequenceUpdate}
             onDelete={this.handleConsequenceDelete}
             onNavigationUpdate={this.handleNavigationUpdate}
@@ -119,5 +124,20 @@ class Consequences extends React.Component {
     );
   }
 }
+
+Consequences.propTypes = {
+  navigationTitle: PropTypes.string,
+  //eslint-disable-next-line
+  breadcrumb: breadcrumbTypes.text,
+  consequences: PropTypes.arrayOf(PropTypes.shape(consequenceTypes)).isRequired,
+  scenes: PropTypes.arrayOf(PropTypes.shape(sceneTypes)).isRequired,
+  stats: PropTypes.arrayOf(PropTypes.shape(statTypes)).isRequired,
+  onNavigationUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+};
+
+Consequences.defaultProps = {
+  navigationTitle: '',
+};
 
 export default Consequences;

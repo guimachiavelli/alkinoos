@@ -44,6 +44,8 @@ class Scene extends React.Component {
   }
 
   render() {
+    const hasTitle = this.props.name;
+    const sceneFilledInputClass = hasTitle ? 'scene__input--filled' : '';
 
     return (
       <div className="scene">
@@ -51,7 +53,7 @@ class Scene extends React.Component {
           <span className="scene__label-text">Scene Title</span>
           <input
             placeholder="Scene Title"
-            className={"scene__input " + (this.props.name ? 'scene__input--filled' : '')}
+            className={`scene__input ${sceneFilledInputClass}`}
             name="name"
             type="text"
             value={this.props.name}
@@ -64,7 +66,7 @@ class Scene extends React.Component {
           consequences={this.props.consequences}
           stats={this.props.stats}
           breadcrumb={this.props.breadcrumb}
-          sceneList={this.props.sceneList}
+          scenes={this.props.scenes}
           onUpdate={this.handleUpdate}
           onNavigationUpdate={this.props.onNavigationUpdate}
         />
@@ -95,8 +97,8 @@ Scene.propTypes.onDelete = PropTypes.func.isRequired;
 Scene.propTypes.onUpdate = PropTypes.func.isRequired;
 Scene.propTypes.onNavigationUpdate = PropTypes.func.isRequired;
 Scene.propTypes.stats = PropTypes.arrayOf(PropTypes.shape(statTypes)).isRequired;
-Scene.propTypes.sceneList = PropTypes.arrayOf(PropTypes.object).isRequired,
-  //eslint-disable-next-line
+Scene.propTypes.scenes = PropTypes.arrayOf(PropTypes.shape(sceneTypes)).isRequired;
+//eslint-disable-next-line
 Scene.propTypes.breadcrumb = breadcrumbTypes.text;
 
 

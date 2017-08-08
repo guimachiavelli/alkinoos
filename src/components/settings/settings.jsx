@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './settings.scss';
 import Stats from '../stats/stats';
+import { statTypes } from '../stat/stat';
 
 class Settings extends React.Component {
   constructor() {
@@ -30,16 +32,19 @@ class Settings extends React.Component {
   }
 
   render() {
+    const titleID = 'settings-input-title';
+
     return (
       <div className="settings">
         <h2>Settings</h2>
 
-        <label>
+        <label htmlFor={titleID}>
           Story Title
           <input
             type="text"
             name="title"
-            value={this.props.title}
+            id={titleID}
+            value={this.props.title || ''}
             onChange={this.handleTitleChange}
           />
         </label>
@@ -52,5 +57,15 @@ class Settings extends React.Component {
     );
   }
 }
+
+Settings.propTypes = {
+  title: PropTypes.string,
+  stats: PropTypes.arrayOf(PropTypes.shape(statTypes)).isRequired,
+  onUpdate: PropTypes.func.isRequired,
+};
+
+Settings.defaultProps = {
+  title: '',
+};
 
 export default Settings;

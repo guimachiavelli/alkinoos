@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class NavigationItem extends React.Component {
   constructor() {
@@ -27,5 +28,16 @@ class NavigationItem extends React.Component {
     );
   }
 }
+
+NavigationItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  selected: PropTypes.bool,
+  onSelect: PropTypes.func.isRequired,
+};
+
+NavigationItem.defaultProps = {
+  selected: false,
+};
 
 export default NavigationItem;

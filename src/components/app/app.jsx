@@ -47,7 +47,7 @@ class App extends React.Component {
   render() {
     const data = encodeURIComponent(JSON.stringify(this.state));
     const json = `data:text/json;charset=utf-8,${data}`;
-    const filename = this.state.settings.title + '.json';
+    const filename = `${this.state.settings.title}.json`;
 
     return (
       <div className="app">
@@ -76,10 +76,8 @@ class App extends React.Component {
           <div className="content__second-column">
             <Scenes
               scenes={this.state.scenes}
-              onUpdate={this.handleSceneUpdate}
-              onSceneSelect={this.handleSelect}
-              selectedScene={this.state.selectedScene}
               stats={this.state.settings.stats}
+              onUpdate={this.handleSceneUpdate}
             />
           </div>
         </div>

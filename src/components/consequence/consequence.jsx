@@ -76,7 +76,6 @@ class Consequence extends React.Component {
   }
 
   render() {
-
     return (
       <li className="consequence">
         <div className="consequence__header">
@@ -102,19 +101,19 @@ class Consequence extends React.Component {
           <Effects
             stats={this.props.stats}
             effects={this.props.effects}
-            sceneList={this.props.sceneList}
+            scenes={this.props.scenes}
             onUpdate={this.handleUpdateEffects}
           />
         </TabContainer>
 
-          <Actions
-            actions={this.props.actions}
-            stats={this.props.stats}
-            breadcrumb={this.props.breadcrumb}
-            sceneList={this.props.sceneList}
-            onUpdate={this.handleUpdate}
-            onNavigationUpdate={this.props.onNavigationUpdate}
-          />
+        <Actions
+          actions={this.props.actions}
+          stats={this.props.stats}
+          breadcrumb={this.props.breadcrumb}
+          scenes={this.props.scenes}
+          onUpdate={this.handleUpdate}
+          onNavigationUpdate={this.props.onNavigationUpdate}
+        />
       </li>
     );
   }

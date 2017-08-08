@@ -17,7 +17,8 @@ class Stat extends React.Component {
       max: this.props.max,
     };
 
-    let { value, name } = event.target;
+    let { value } = event.target;
+    const { name } = event.target;
 
     if (name === 'initial' || name === 'max') {
       value = parseInt(value, 10);
@@ -33,33 +34,37 @@ class Stat extends React.Component {
   }
 
   render() {
+    const inputID = `${this.props.id}-input`;
     return (
       <li className="stat">
-        <label>
+        <label htmlFor={`${inputID}-name`}>
           Stat title
           <input
             type="text"
-            onChange={this.handleInputChange}
             name="name"
             value={this.props.name}
+            id={`${inputID}-name`}
+            onChange={this.handleInputChange}
           />
         </label>
-        <label>
+        <label htmlFor={`${inputID}-initial`}>
           Stat initial value
           <input
             type="number"
-            onChange={this.handleInputChange}
             name="initial"
             value={this.props.initial}
+            id={`${inputID}-initial`}
+            onChange={this.handleInputChange}
           />
         </label>
-        <label>
+        <label htmlFor={`${inputID}-max`}>
           Stat max value
           <input
             type="number"
-            onChange={this.handleInputChange}
             name="max"
             value={this.props.max}
+            id={`${inputID}-max`}
+            onChange={this.handleInputChange}
           />
         </label>
         <button onClick={this.handleDelete}>Delete stat</button>

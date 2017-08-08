@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import clone from 'lodash.clone';
 
 import './scenes.scss';
 
 import Scene, { sceneTypes } from '../scene/scene';
+import { statTypes } from '../stat/stat';
 import Navigation from '../navigation/navigation';
 import Breadcrumb from '../breadcrumb/breadcrumb';
 
@@ -29,12 +29,12 @@ class Scenes extends React.Component {
       id: Date.now(),
       name: '',
       consequences: [],
+      selected: true,
     };
 
     scenes.push(scene);
 
     this.props.onUpdate(scenes);
-    this.props.onSceneSelect(scene.id);
   }
 
   handleSceneUpdate(updatedScene) {
@@ -80,11 +80,7 @@ class Scenes extends React.Component {
   }
 
   render() {
-    const sceneList = this.props.scenes.map(scene =>
-      ({ id: scene.id, name: scene.name, selected: scene.selected }),
-    );
-
-    const scene = this.props.scenes.find(scene => scene.selected === true);
+    const scene = this.props.scenes.find(s => s.selected === true);
 
     return (
       <div className="scenes">
@@ -93,7 +89,6 @@ class Scenes extends React.Component {
         <div className="scenes__header">
           <Navigation
             items={this.props.scenes}
-            selected={scene.id}
             title="Scenes"
             onSelect={this.handleSceneSelect}
             onAdd={this.handleSceneAdd}
@@ -109,7 +104,7 @@ class Scenes extends React.Component {
         <Scene
           id={scene.id}
           name={scene.name}
-          sceneList={this.props.scenes}
+          scenes={this.props.scenes}
           selected={scene.selected}
           consequences={scene.consequences}
           stats={this.props.stats}
@@ -126,7 +121,8 @@ class Scenes extends React.Component {
 
 Scenes.propTypes = {
   scenes: PropTypes.arrayOf(PropTypes.shape(sceneTypes)).isRequired,
-
+  stats: PropTypes.arrayOf(PropTypes.shape(statTypes)).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default Scenes;

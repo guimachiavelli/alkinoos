@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './conditions.scss';
-import Condition from '../condition/condition';
+import Condition, { conditionTypes } from '../condition/condition';
+
+import { statTypes } from '../stat/stat';
 
 class Conditions extends React.Component {
   constructor() {
@@ -20,6 +23,8 @@ class Conditions extends React.Component {
       value: '',
       stat: '',
       operator: '',
+      condition: [],
+      stats: [],
     };
 
     conditions.push(condition);
@@ -46,8 +51,8 @@ class Conditions extends React.Component {
       condition.type === 'default',
     );
 
-    const conditions = this.props.conditions.map((condition) => {
-      return (
+    const conditions = this.props.conditions.map(condition =>
+      (
         <Condition
           key={condition.id}
           id={condition.id}
@@ -59,8 +64,9 @@ class Conditions extends React.Component {
           conditions={this.props.conditions}
           onUpdate={this.handleConditionUpdate}
           onDelete={this.handleConditionDelete}
-        />);
-    });
+        />
+      ),
+    );
 
     return (
       <div className="conditions">
@@ -80,5 +86,11 @@ class Conditions extends React.Component {
     );
   }
 }
+
+Conditions.propTypes = {
+  conditions: PropTypes.arrayOf(PropTypes.shape(conditionTypes)).isRequired,
+  stats: PropTypes.arrayOf(PropTypes.shape(statTypes)).isRequired,
+  onUpdate: PropTypes.func.isRequired,
+};
 
 export default Conditions;

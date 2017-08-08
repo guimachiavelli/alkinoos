@@ -1,9 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './actions.scss';
 
 import Navigation from '../navigation/navigation';
-import Action from '../action/action';
+import Action, { actionTypes } from '../action/action';
+
+import { breadcrumbTypes } from '../breadcrumb/breadcrumb';
+import { sceneTypes } from '../scene/scene';
+import { statTypes } from '../stat/stat';
 
 class Actions extends React.Component {
   constructor() {
@@ -22,6 +27,9 @@ class Actions extends React.Component {
       id: Date.now(),
       name: '',
       consequences: [],
+      stats: [],
+      breadcrumb: [],
+      scenes: [],
       selected: true,
     };
 
@@ -64,7 +72,7 @@ class Actions extends React.Component {
   }
 
   render() {
-    const action = this.props.actions.find(action => action.selected === true);
+    const action = this.props.actions.find(a => a.selected === true);
 
     return (
       <div className="actions">
@@ -72,7 +80,6 @@ class Actions extends React.Component {
           <Navigation
             items={this.props.actions}
             title="Actions possible"
-            selected={action && action.selected}
             onSelect={this.handleActionSelect}
             onAdd={this.handleActionAdd}
             onScroll={this.handleNavigationUpdate}
@@ -88,7 +95,7 @@ class Actions extends React.Component {
           selected={action.selected}
           stats={this.props.stats}
           breadcrumb={this.props.breadcrumb}
-          sceneList={this.props.sceneList}
+          scenes={this.props.scenes}
           onUpdate={this.handleActionUpdate}
           onDelete={this.handleActionDelete}
           onNavigationUpdate={this.handleNavigationUpdate}
@@ -98,5 +105,15 @@ class Actions extends React.Component {
     );
   }
 }
+
+Actions.propTypes = {
+  actions: PropTypes.arrayOf(PropTypes.shape(actionTypes)).isRequired,
+  //eslint-disable-next-line
+  breadcrumb: breadcrumbTypes.text,
+  scenes: PropTypes.arrayOf(PropTypes.shape(sceneTypes)).isRequired,
+  stats: PropTypes.arrayOf(PropTypes.shape(statTypes)).isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  onNavigationUpdate: PropTypes.func.isRequired,
+};
 
 export default Actions;

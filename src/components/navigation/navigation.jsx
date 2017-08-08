@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import throttle from 'lodash.throttle';
 
 import './navigation.scss';
@@ -11,6 +12,14 @@ class Navigation extends React.Component {
     this.handleAdd = this.handleAdd.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleScroll = throttle(this.handleScroll, 250).bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleAdd() {
@@ -27,14 +36,6 @@ class Navigation extends React.Component {
     const isVisible = clientRect.top + clientRect.height < 0;
 
     this.props.onScroll(selected, isVisible);
-  }
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
   }
 
   render() {
@@ -71,5 +72,17 @@ class Navigation extends React.Component {
     );
   }
 }
+
+Navigation.propTypes = {
+  title: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onAdd: PropTypes.func.isRequired,
+  onScroll: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
+};
+
+Navigation.defaultProps = {
+  title: '',
+};
 
 export default Navigation;

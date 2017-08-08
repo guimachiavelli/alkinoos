@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Upload extends React.Component {
   constructor() {
@@ -10,8 +11,8 @@ class Upload extends React.Component {
     const file = event.target.files[0];
     const reader = new FileReader();
 
-    reader.onload = (event) => {
-      const response = event.target.result;
+    reader.onload = (loadEvent) => {
+      const response = loadEvent.target.result;
       const json = JSON.parse(response);
 
       this.props.onUpload(json);
@@ -29,5 +30,9 @@ class Upload extends React.Component {
     );
   }
 }
+
+Upload.propTypes = {
+  onUpload: PropTypes.func.isRequired,
+};
 
 export default Upload;

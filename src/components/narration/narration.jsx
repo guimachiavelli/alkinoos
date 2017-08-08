@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Narration extends React.Component {
   constructor() {
@@ -8,7 +9,6 @@ class Narration extends React.Component {
 
   handleUpdateText(event) {
     const textArray = event.target.value.split('\n\n');
-
     this.props.onChange(textArray);
   }
 
@@ -29,5 +29,14 @@ class Narration extends React.Component {
     );
   }
 }
+
+Narration.propTypes = {
+  text: PropTypes.arrayOf(PropTypes.string),
+  onChange: PropTypes.func.isRequired,
+};
+
+Narration.defaultProps = {
+  text: [],
+};
 
 export default Narration;

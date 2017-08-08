@@ -8,4 +8,4 @@ build:
 	$(BIN)/webpack
 
 lint:
-	$(BIN)/eslint './src/**' --ignore-pattern '*.scss'
+	$(BIN)/eslint './src/**' --ignore-pattern '*.scss' --ignore-pattern '*.woff*'
