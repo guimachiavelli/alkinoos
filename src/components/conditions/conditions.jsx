@@ -61,7 +61,7 @@ class Conditions extends React.Component {
           stat={condition.stat}
           stats={this.props.stats}
           operator={condition.operator}
-          conditions={this.props.conditions}
+          conditionsLength={this.props.conditions.length}
           onUpdate={this.handleConditionUpdate}
           onDelete={this.handleConditionDelete}
         />

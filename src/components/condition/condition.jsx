@@ -21,7 +21,6 @@ class Condition extends React.Component {
       stat: this.props.stat,
       operator: this.props.operator,
       stats: this.props.stats,
-      conditions: this.props.conditions,
     };
 
     updatedCondition[event.target.name] = event.target.value;
@@ -66,7 +65,7 @@ class Condition extends React.Component {
             onChange={this.handleInputChange}
           >
             <option value="">Choose condition type</option>
-            {this.props.conditions.length < 2 &&
+            {this.props.conditionsLength < 2 &&
             <option value="default">Default</option>
             }
             <option value="flag">Flag</option>
@@ -76,7 +75,7 @@ class Condition extends React.Component {
           </select>
         </label>
 
-        { this.props.type === 'stat' && stats.length > 0 &&
+        {this.props.type === 'stat' && stats.length > 0 &&
         <label className="condition__label" htmlFor={statID}>
           Stat
           <select
@@ -92,7 +91,7 @@ class Condition extends React.Component {
         </label>
         }
 
-        { this.props.type === 'stat' &&
+        {this.props.type === 'stat' &&
         <label className="condition__label" htmlFor={operatorID}>
           Operator
           <select
@@ -110,7 +109,7 @@ class Condition extends React.Component {
         </label>
         }
 
-        { this.props.type !== 'default' &&
+        {this.props.type !== 'default' &&
         <label className="condition__label" htmlFor={valueID}>
           <span className="condition__label-text">Trigger value</span>
           <input
@@ -140,9 +139,7 @@ Condition.propTypes = {
 
 const conditionTypes = clone(Condition.propTypes);
 
-Condition.propTypes.conditions = PropTypes.arrayOf(
-  PropTypes.shape(conditionTypes),
-).isRequired;
+Condition.propTypes.conditionsLength = PropTypes.number.isRequired;
 Condition.propTypes.onDelete = PropTypes.func.isRequired;
 Condition.propTypes.onUpdate = PropTypes.func.isRequired;
 

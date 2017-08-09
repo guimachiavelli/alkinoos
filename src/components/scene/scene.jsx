@@ -86,10 +86,13 @@ Scene.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
-  consequences: PropTypes.arrayOf(
-    PropTypes.shape(consequenceTypes),
-  ).isRequired,
 };
+
+const simplifiedSceneTypes = clone(Scene.propTypes);
+
+Scene.propTypes.consequences = PropTypes.arrayOf(
+  PropTypes.shape(consequenceTypes),
+).isRequired;
 
 const sceneTypes = clone(Scene.propTypes);
 
@@ -97,10 +100,10 @@ Scene.propTypes.onDelete = PropTypes.func.isRequired;
 Scene.propTypes.onUpdate = PropTypes.func.isRequired;
 Scene.propTypes.onNavigationUpdate = PropTypes.func.isRequired;
 Scene.propTypes.stats = PropTypes.arrayOf(PropTypes.shape(statTypes)).isRequired;
-Scene.propTypes.scenes = PropTypes.arrayOf(PropTypes.shape(sceneTypes)).isRequired;
+Scene.propTypes.scenes = PropTypes.arrayOf(PropTypes.shape(simplifiedSceneTypes)).isRequired;
 //eslint-disable-next-line
 Scene.propTypes.breadcrumb = breadcrumbTypes.text;
 
 
-export { sceneTypes };
+export { simplifiedSceneTypes, sceneTypes };
 export default Scene;

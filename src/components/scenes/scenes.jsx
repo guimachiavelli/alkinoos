@@ -81,6 +81,10 @@ class Scenes extends React.Component {
 
   render() {
     const scene = this.props.scenes.find(s => s.selected === true);
+    const simplifiedScenes = this.props.scenes.map(scene =>
+      ({ id: scene.id, name: scene.name, selected: scene.selected })
+    );
+
 
     return (
       <div className="scenes">
@@ -88,7 +92,7 @@ class Scenes extends React.Component {
 
         <div className="scenes__header">
           <Navigation
-            items={this.props.scenes}
+            items={simplifiedScenes}
             title="Scenes"
             onSelect={this.handleSceneSelect}
             onAdd={this.handleSceneAdd}
@@ -104,7 +108,7 @@ class Scenes extends React.Component {
         <Scene
           id={scene.id}
           name={scene.name}
-          scenes={this.props.scenes}
+          scenes={simplifiedScenes}
           selected={scene.selected}
           consequences={scene.consequences}
           stats={this.props.stats}

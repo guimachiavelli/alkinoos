@@ -59,7 +59,7 @@ class Navigation extends React.Component {
         </div>
         <ol className="navigation__list">
           { items }
-          <li>
+          <li className="navigation__item">
             <button
               className="navigation__button"
               onClick={this.handleAdd}

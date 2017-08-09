@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './navigation-item.scss';
+
 class NavigationItem extends React.Component {
   constructor() {
     super();
