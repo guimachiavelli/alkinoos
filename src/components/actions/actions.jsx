@@ -91,11 +91,11 @@ class Actions extends React.Component {
           key={action.id}
           id={action.id}
           name={action.name}
-          consequences={action.consequences}
           selected={action.selected}
-          stats={this.props.stats}
-          breadcrumb={this.props.breadcrumb}
-          scenes={this.props.scenes}
+          consequences={action.consequences.slice(0)}
+          stats={this.props.stats.slice(0)}
+          breadcrumb={this.props.breadcrumb.slice(0)}
+          scenes={this.props.scenes.slice(0)}
           onUpdate={this.handleActionUpdate}
           onDelete={this.handleActionDelete}
           onNavigationUpdate={this.handleNavigationUpdate}

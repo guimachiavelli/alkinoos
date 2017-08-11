@@ -108,11 +108,11 @@ class Scenes extends React.Component {
         <Scene
           id={scene.id}
           name={scene.name}
-          scenes={simplifiedScenes}
           selected={scene.selected}
-          consequences={scene.consequences}
-          stats={this.props.stats}
-          breadcrumb={this.state.breadcrumb}
+          scenes={simplifiedScenes}
+          consequences={scene.consequences.slice(0)}
+          stats={this.props.stats.slice(0)}
+          breadcrumb={this.state.breadcrumb.slice(0)}
           onUpdate={this.handleSceneUpdate}
           onDelete={this.handleSceneDelete}
           onNavigationUpdate={this.handleBreadcrumbUpdate}

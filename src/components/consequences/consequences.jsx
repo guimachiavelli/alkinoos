@@ -106,14 +106,14 @@ class Consequences extends React.Component {
           <Consequence
             key={consequence.id}
             id={consequence.id}
-            conditions={consequence.conditions}
             selected={consequence.selected}
-            text={consequence.text}
-            actions={consequence.actions}
-            effects={consequence.effects}
-            breadcrumb={this.props.breadcrumb}
-            stats={this.props.stats}
-            scenes={this.props.scenes}
+            text={consequence.text.slice(0)}
+            conditions={consequence.conditions.slice(0)}
+            actions={consequence.actions.slice(0)}
+            effects={consequence.effects.slice(0)}
+            breadcrumb={this.props.breadcrumb.slice(0)}
+            stats={this.props.stats.slice(0)}
+            scenes={this.props.scenes.slice(0)}
             onUpdate={this.handleConsequenceUpdate}
             onDelete={this.handleConsequenceDelete}
             onNavigationUpdate={this.handleNavigationUpdate}
