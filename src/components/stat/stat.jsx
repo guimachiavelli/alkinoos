@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clone from 'lodash.clone';
 
+import './stat.scss';
+
 class Stat extends React.Component {
   constructor() {
     super();
@@ -37,37 +39,55 @@ class Stat extends React.Component {
     const inputID = `${this.props.id}-input`;
     return (
       <li className="stat">
-        <label htmlFor={`${inputID}-name`}>
-          Stat title
+        <button
+          className="stat__delete"
+          onClick={this.handleDelete}
+        >
+          &times;
+        </button>
+
+        <label
+          className="stat__label"
+          htmlFor={`${inputID}-name`}
+        >
+          <span className="stat__label-text">Stat title</span>
           <input
             type="text"
             name="name"
+            className="stat__input"
             value={this.props.name}
             id={`${inputID}-name`}
             onChange={this.handleInputChange}
           />
         </label>
-        <label htmlFor={`${inputID}-initial`}>
-          Stat initial value
+        <label
+          className="stat__label"
+          htmlFor={`${inputID}-initial`}
+        >
+          <span className="stat__label-text">Stat initial value</span>
           <input
             type="number"
             name="initial"
+            className="stat__input"
             value={this.props.initial}
             id={`${inputID}-initial`}
             onChange={this.handleInputChange}
           />
         </label>
-        <label htmlFor={`${inputID}-max`}>
-          Stat max value
+        <label
+          className="stat__label"
+          htmlFor={`${inputID}-max`}
+        >
+          <span className="stat__label-text">Stat max value</span>
           <input
             type="number"
             name="max"
+            className="stat__input"
             value={this.props.max}
             id={`${inputID}-max`}
             onChange={this.handleInputChange}
           />
         </label>
-        <button onClick={this.handleDelete}>Delete stat</button>
       </li>
     );
   }

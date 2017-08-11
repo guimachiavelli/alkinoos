@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Stat, { statTypes } from '../stat/stat';
 
+import './stats.scss';
+
 class Stats extends React.Component {
   constructor() {
     super();
@@ -57,11 +59,19 @@ class Stats extends React.Component {
 
     return (
       <div className="stats">
-        <h3>Stats</h3>
+        <div className="stats__header">
+          <h3 className="stats__title">Stats</h3>
+          <button
+            className="stats__add"
+            onClick={this.handleStatAdd}
+          >
+            +
+          </button>
+        </div>
         <ol className="stats__list">
           {stats}
         </ol>
-        <button onClick={this.handleStatAdd}>Add stat</button>
+
       </div>
     );
   }

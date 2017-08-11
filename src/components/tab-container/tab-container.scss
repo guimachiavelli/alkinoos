@@ -1,21 +1,34 @@
-.tabs__index {
-    margin: 0;
+@import '../globals/globals.scss';
+
+.tabs {
+    margin-bottom: baselines(5);
 }
 
 .tab-title {
     display: inline-block;
-    border: 1px solid black;
-    border-bottom: 0;
-    border-right: 0;
-    padding: 0.25em;
+    margin-right: 1px;
+    //border-bottom: 1px solid colour(darkgrey);
+    padding: 0 1em;
+    height: baselines(4);
+    line-height: baselines(4);
+    cursor: pointer;
+    background: colour(darkgrey);
 
-    &:last-child {
-        border-right: 1px solid black;
+    &:hover {
+        background: colour(blue);
     }
 }
 
+.tab-title__label {
+    cursor: pointer;
+}
+
 .tab-title__active {
-    background: coral;
+    background: colour(lightgrey);
+
+    &:hover {
+        background: colour(lightgrey);
+    }
 }
 
 .tab {
@@ -23,7 +36,8 @@
 
 .tab__content {
     display: none;
-    border: 1px solid black;
+    padding: 1em;
+    background: colour(lightgrey);
 
     .tab__radio:checked + & {
         display: block;

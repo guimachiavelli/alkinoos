@@ -36,23 +36,31 @@ class Settings extends React.Component {
 
     return (
       <div className="settings">
-        <h2>Settings</h2>
+        <div className="settings__header">
+          <h2 className="settings__title">Settings</h2>
+        </div>
 
-        <label htmlFor={titleID}>
-          Story Title
-          <input
-            type="text"
-            name="title"
-            id={titleID}
-            value={this.props.title || ''}
-            onChange={this.handleTitleChange}
+        <div className="settings__fields">
+          <label
+            className="settings__label"
+            htmlFor={titleID}
+          >
+            <span className="settings__label-text">Story Title</span>
+            <input
+              type="text"
+              name="title"
+              className="settings__input"
+              id={titleID}
+              value={this.props.title || ''}
+              onChange={this.handleTitleChange}
+            />
+          </label>
+
+          <Stats
+            stats={this.props.stats}
+            onUpdate={this.handleStatUpdate}
           />
-        </label>
-
-        <Stats
-          stats={this.props.stats}
-          onUpdate={this.handleStatUpdate}
-        />
+        </div>
       </div>
     );
   }

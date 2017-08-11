@@ -16,7 +16,7 @@ class Breadcrumb extends React.Component {
       return null;
     }
 
-    text = text.join(' > ');
+    text = text.join(' \u27F6 ');
 
     return (
       <div className="breadcrumb">

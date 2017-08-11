@@ -82,7 +82,7 @@ class Consequence extends React.Component {
           <button
             onClick={this.handleDelete}
           >
-            Delete
+            &times;
           </button>
         </div>
 

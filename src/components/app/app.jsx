@@ -3,6 +3,7 @@ import './app.scss';
 
 import Settings from '../settings/settings';
 import Scenes from '../scenes/scenes';
+import Menu from '../menu/menu';
 import Upload from '../upload/upload';
 import Save from '../save/save';
 
@@ -51,7 +52,13 @@ class App extends React.Component {
 
     return (
       <div className="app">
-        <div className="menu">
+        <Menu>
+          <div className="menu__header">
+            <h1 className="menu__title">
+              Alkinoos: interactive fiction creator
+            </h1>
+          </div>
+
           <a
             className="menu__download"
             href={json}
@@ -62,7 +69,7 @@ class App extends React.Component {
 
           <Upload onUpload={this.handleUpload} />
           <Save game={this.state} />
-        </div>
+        </Menu>
 
         <div className="content">
           <div className="content__first-column">

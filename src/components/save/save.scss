@@ -1,0 +1,13 @@
+@import '../globals/globals.scss';
+
+.save__button {
+    display: block;
+    background: colour(lightgrey);
+    height: baselines(3);
+    line-height: baselines(3);
+    padding: 0 1em;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-family: Baskerville;
+}

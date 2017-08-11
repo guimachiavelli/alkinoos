@@ -61,7 +61,7 @@ class Navigation extends React.Component {
           { items }
           <li className="navigation__item">
             <button
-              className="navigation__button"
+              className="navigation__button navigation__button--add"
               onClick={this.handleAdd}
             >
               +

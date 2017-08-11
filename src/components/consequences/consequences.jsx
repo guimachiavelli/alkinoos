@@ -71,10 +71,10 @@ class Consequences extends React.Component {
     const consequence = this.props.consequences.find(c => c.selected === true);
 
     const consequenceList = this.props.consequences.map((c) => {
-      let name = 'Outcome';
+      let name = '';
 
       if (c.conditions.length < 1 || c.conditions[0].type === 'default') {
-        name = 'Default outcome';
+        name = 'Default';
       } else if (c.conditions[0].type === 'stat') {
         name = `If ${c.conditions[0].stat} ${c.conditions[0].operator} ${c.conditions[0].value}`;
       } else if (c.conditions[0].type === 'flag') {

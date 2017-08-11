@@ -79,7 +79,7 @@ class Actions extends React.Component {
         <div className="actions__header">
           <Navigation
             items={this.props.actions}
-            title="Actions possible"
+            title="Possible Actions"
             onSelect={this.handleActionSelect}
             onAdd={this.handleActionAdd}
             onScroll={this.handleNavigationUpdate}

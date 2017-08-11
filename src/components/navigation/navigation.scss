@@ -1,32 +1,27 @@
+@import '../globals/globals.scss';
+
+$main-content-columns: 4;
+$main-content-column-gaps: $main-content-columns - 1em;
+
 .navigation {
     width: 100%;
+    margin-bottom: baselines(2);
+    padding-bottom: baselines(2);
+    border-bottom: 4px solid black;
 }
 
 .navigation__list {
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(100,
+        calc(
+            (100% - #{$main-content-column-gaps}) / #{$main-content-columns}
+        )
+    );
+    grid-column-gap: $grid-columns-gap;
     overflow: auto;
 }
 
-.navigation__item {
-    margin-right: 2em;
-    flex: 0 0 auto;
-
-    button {
-        display: block;
-        height: 70px;
-        width: 100px;
-        border: 1px solid black;
-        text-decoration: none;
-        color: black;
-    }
-}
-
-.navigation__button {
-    height: 70px;
-    width: 100px;
-}
-
-.navigation__button--selected {
-    background: coral;
+.navigation__title {
+    font-size: font-size(h2);
+    margin-bottom: baselines(1);
 }

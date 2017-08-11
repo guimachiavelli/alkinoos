@@ -1,10 +1,13 @@
+@import '../globals/globals.scss';
+
 .breadcrumb {
     position: fixed;
-    top: 0;
-    width: 70%;
+    top: $menu-height;
+    width: calc(82% - 1em);
     right: 0;
-    background: white;
+    background: rgba(255,255,255,0.95);
     padding: 0.5em 0;
+    z-index: 1;
 }
 
 .breadcrumb__text {
@@ -13,4 +16,5 @@
     white-space: nowrap;
     text-align: left;
     direction: rtl;
+    unicode-bidi: plaintext;
 }

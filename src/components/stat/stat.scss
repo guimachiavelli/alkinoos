@@ -1,0 +1,50 @@
+@import '../globals/globals.scss';
+
+.stat {
+    margin-bottom: baselines(2);
+    padding: 1em;
+    background: colour(white);
+    position: relative;
+}
+
+.stat__delete {
+    position: absolute;
+    right: 1em;
+    top: baselines(1);
+    background: colour(blue);
+    height: baselines(2);
+    width: baselines(2);
+    line-height: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+        background: colour(darkgrey);
+    }
+}
+
+.stat__label {
+    margin-bottom: baselines(2);
+}
+
+.stat__label-text {
+    margin-bottom: baselines(0.5);
+    display: block;
+}
+
+.stat__input {
+    display: block;
+    width: 100%;
+    padding: 0.75em;
+    border: 1px solid colour(lightgrey);
+
+    &:focus {
+        appearance: none;
+        -webkit-appearance: none;
+        outline: 0;
+        box-shadow: inset 0 0 0 3px colour(blue);
+        border: 1px solid colour(blue);
+    }
+}

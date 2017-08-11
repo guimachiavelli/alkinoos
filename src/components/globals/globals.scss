@@ -1,0 +1,79 @@
+$grid-columns-repeat: 5;
+$grid-columns-gap: 1em;
+$grid-columns-width: 2fr;
+
+$baseline: 8px;
+$base-font-size: 6px;
+
+$font-sizes: (
+    h1: $base-font-size * 4,
+    h2: $base-font-size * 3,
+    h3: $base-font-size * 2,
+    body: $base-font-size * 2,
+    menu: $base-font-size * 2
+);
+
+$colours: (
+    black: black,
+    white: white,
+    lightgrey: #eee,
+    darkgrey: #ccc,
+    blue: yellow,
+    darkblue: darken(yellow, 5%),
+);
+
+$breakpoints: (
+    mobile: 320px,
+    tablet: 768px,
+    desktop: 1024px,
+    desktop-hd: 1440px
+);
+
+@function baselines($lines) {
+    @return $lines * $baseline;
+}
+
+@function font-size($size) {
+    @return map-get($font-sizes, $size);
+}
+
+@function colour($colour) {
+    @return map-get($colours, $colour);
+}
+
+@function breakpoint($breakpoint) {
+    @return map-get($breakpoints, $breakpoint);
+}
+
+@mixin animation($animation) {
+    -ms-animation: $animation;
+    -webkit-animation: $animation;
+    -moz-animation: $animation;
+    -o-animation: $animation;
+    animation: $animation;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-ms-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+$site-padding: baselines(2.5);
+$menu-height: baselines(4.5);

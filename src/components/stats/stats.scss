@@ -1,0 +1,23 @@
+@import '../globals/globals.scss';
+
+.stats__header {
+    position: relative;
+}
+
+.stats__title {
+    margin-bottom: baselines(1);
+    font-size: font-size(h2);
+}
+
+.stats__add {
+    background: colour(blue);
+    position: absolute;
+    top: baselines(0.5);
+    right: 0;
+    line-height: 0;
+    text-align: center;
+    padding: 0;
+    height: baselines(2);
+    width: baselines(2);
+    cursor: pointer;
+}

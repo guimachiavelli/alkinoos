@@ -1,33 +1,43 @@
-.scene {
-    counter-increment: scene;
-    list-style: none;
+.scene__header {
+    overflow: hidden;
 }
 
 .scene__label {
+    margin-bottom: 3em;
+    width: 80%;
+    float: left;
 }
 
 .scene__label-text {
-    font-size: medium;
-    display: inline-block;
-    //display: none;
+    font-size: small;
+    margin-right: 1em;
+    display: none;
 }
 
 .scene__input {
     display: inline-block;
-    border: 0;
-    border-bottom: 1px solid black;
-    box-sizing: border-box;
-    font-size: medium;
+    font-size: 70px;
     margin: 0;
+    border: 1px solid black;
+    font-family: 'Baskerville';
+    padding: 0.25em;
+    width: 100%;
 
     &:active,
     &:focus {
         outline: 0;
         -webkit-appearance: none;
-        border-bottom: 2px solid black;
     }
 }
 
 .scene__input--filled {
-    border-bottom: 2px solid whitesmoke;
+}
+
+.scene__delete {
+    float: right;
+    width: 18%;
+    font-size: 74px;
+    line-height: 88px;
+    vertical-align: middle;
+    padding: 0.25em;
 }

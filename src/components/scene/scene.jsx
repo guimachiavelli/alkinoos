@@ -49,20 +49,30 @@ class Scene extends React.Component {
 
     return (
       <div className="scene">
-        <label htmlFor="name" className="scene__label">
-          <span className="scene__label-text">Scene Title</span>
-          <input
-            placeholder="Scene Title"
-            className={`scene__input ${sceneFilledInputClass}`}
-            name="name"
-            type="text"
-            value={this.props.name}
-            onChange={this.handleTitleChange}
-          />
-        </label>
+        <div className="scene__header">
+          <label htmlFor="name" className="scene__label">
+            <span className="scene__label-text">Scene Title</span>
+            <input
+              placeholder="Scene Title"
+              className={`scene__input ${sceneFilledInputClass}`}
+              name="name"
+              type="text"
+              value={this.props.name}
+              onChange={this.handleTitleChange}
+            />
+          </label>
+
+          <button
+            className="scene__delete"
+            onClick={this.handleDelete}
+          >
+            &times;
+          </button>
+        </div>
+
 
         <Consequences
-          navigationTitle={`Consequences of entering "${this.props.name}"`}
+          navigationTitle={`When entering "${this.props.name}"`}
           consequences={this.props.consequences}
           stats={this.props.stats}
           breadcrumb={this.props.breadcrumb}
@@ -71,12 +81,6 @@ class Scene extends React.Component {
           onNavigationUpdate={this.props.onNavigationUpdate}
         />
 
-        <button
-          className="scene__delete"
-          onClick={this.handleDelete}
-        >
-          Delete scene
-        </button>
       </div>
     );
   }

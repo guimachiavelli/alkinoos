@@ -1,0 +1,41 @@
+@import '../globals/globals.scss';
+
+.navigation__item {
+    position: relative;
+    height: 15vw;
+}
+
+.navigation__button {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    background: colour(lightgrey);
+    cursor: pointer;
+    font-size: font-size(h2);
+    font-family: Baskerville;
+
+    &:focus {
+        -webkit-appearance: none;
+        outline: 0;
+        box-shadow: inset 0px 0 0 2px colour(darkblue);
+    }
+
+    &:hover {
+        background: colour(darkgrey);
+    }
+}
+
+.navigation__button--selected {
+    background: colour(blue);
+
+    &:hover {
+        background: colour(blue);
+    }
+}
+
+.navigation__button--add {
+    font-size: 70px;
+    font-weight: bold;
+}

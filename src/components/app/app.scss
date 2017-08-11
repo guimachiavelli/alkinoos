@@ -1,45 +1,16 @@
-@import './globals.scss';
+@import '../globals/fonts.scss';
+@import '../globals/globals.scss';
 
 * {
     margin: 0;
     padding: 0;
+    list-style: none;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Baskerville'
-}
-
-ol {
-    margin-bottom: 2em;
-    list-style: none;
-}
-
-input,
-textarea {
-    margin-left: 0.5em;
-    padding: 0.25em 0;
-    display: inline-block;
-    border: 0;
-    border-bottom: 2px solid whitesmoke;
-    box-sizing: border-box;
-    font-size: medium;
-
-    &:active,
-    &:focus {
-        outline: 0;
-        -webkit-appearance: none;
-        border-bottom: 2px solid black;
-    }
-}
-
-textarea {
-    margin-left: 0;
-    border: 2px solid whitesmoke;
-
-    &:active,
-    &:focus {
-        border: 2px solid black;
-    }
+    font-family: 'Baskerville';
+    font-size: font-size(body);
 }
 
 label {
@@ -54,22 +25,23 @@ button {
 }
 
 .app {
-    margin: 1em;
 }
 
-.menu {
-    display: none;
-}
+$content-padding-top: $menu-height + baselines(2);
 
 .content {
     display: grid;
-    grid-template-columns: 3fr 7fr;
+    grid-template-columns: repeat(5, 2fr);
+    grid-column-gap: 2.5%;
+}
+
+.content__first-column {
+    background: colour(lightgrey);
+    padding: $content-padding-top $site-padding;
 }
 
 .content__second-column {
+    padding: $content-padding-top $site-padding 1em 0;
     overflow: hidden;
-}
-
-.content__full-column {
-    grid-column-start: 2;
+    grid-column-start: span 4;
 }

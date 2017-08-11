@@ -1,9 +1,11 @@
 .consequence {
-    counter-increment: consequence;
+    position: relative;
 }
 
 .consequence__header {
     margin-bottom: 1em;
+    position: absolute;
+    right: 0;
 }
 
 .consequence__components {

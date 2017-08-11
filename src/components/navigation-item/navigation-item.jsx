@@ -13,6 +13,11 @@ class NavigationItem extends React.Component {
     this.props.onSelect(this.props.id);
   }
 
+  hexColour(number) {
+    const hexString = number.toString(16);
+    return `#${hexString.substr(-6, 6)}`;
+  }
+
   render() {
     const selected = this.props.selected;
     let classes = 'navigation__button';

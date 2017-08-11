@@ -1,0 +1,15 @@
+@import '../globals/globals.scss';
+
+.upload__label {
+    background: colour(lightgrey);
+    height: baselines(3);
+    line-height: baselines(3);
+    padding: 0 1em;
+    cursor: pointer;
+}
+
+.upload__input {
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+}

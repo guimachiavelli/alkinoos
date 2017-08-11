@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './upload.scss';
+
 class Upload extends React.Component {
   constructor() {
     super();
@@ -24,8 +26,18 @@ class Upload extends React.Component {
   render() {
     return (
       <div className="upload">
-        Upload a json file
-        <input type="file" onChange={this.handleFileUpload} />
+        <label
+          htmlFor="upload-input"
+          className="upload__label"
+        >
+          <span className="upload__label-text">Upload file</span>
+          <input
+            type="file"
+            className="upload__input"
+            id="upload-input"
+            onChange={this.handleFileUpload}
+          />
+        </label>
       </div>
     );
   }

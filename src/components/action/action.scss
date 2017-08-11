@@ -1,2 +1,39 @@
 .action {
 }
+
+.action__header {
+    margin-bottom: 3em;
+
+}
+
+.action__label-text {
+    display: none;
+}
+
+.action__label {
+    width: 90%;
+    display: inline-block;
+    margin: 0;
+}
+
+.action__input {
+    display: inline-block;
+    font-size: 30px;
+    margin: 0;
+    border: 1px solid black;
+    font-family: 'Baskerville';
+    padding: 0.25em;
+    width: 100%;
+    line-height: 30px;
+}
+
+.action__delete {
+    display: inline-block;
+    width: 8%;
+    margin-left: 2%;
+    font-size: 30px;
+    line-height: 30px;
+    padding: 0.25em;
+    height: 54px;
+
+}

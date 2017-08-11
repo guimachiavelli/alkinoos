@@ -1,3 +1,35 @@
+@import '../globals/globals.scss';
+
 .settings {
 
+}
+
+.settings__title {
+    margin-bottom: baselines(3);
+}
+
+.settings__label {
+    margin-bottom: baselines(2);
+}
+
+.settings__label-text {
+    font-size: font-size(h2);
+    font-weight: bold;
+    margin-bottom: baselines(0.5);
+    display: block;
+}
+
+.settings__input {
+    display: block;
+    width: 100%;
+    padding: 0.75em;
+    border: 1px solid colour(lightgrey);
+
+    &:focus {
+        appearance: none;
+        -webkit-appearance: none;
+        outline: 0;
+        box-shadow: inset 0 0 0 3px colour(blue);
+        border: 1px solid colour(blue);
+    }
 }

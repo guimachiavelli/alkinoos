@@ -56,20 +56,23 @@ class Action extends React.Component {
     return (
       <div className="action">
         <div className="action__header">
-          <label htmlFor={titleID}>
-            Action Title
+          <label className="action__label" htmlFor={titleID}>
+            <span className="action__label-text">Action Title</span>
             <input
               type="text"
-              onChange={this.handleTitleChange}
+              className="action__input"
+              placeholder="Insert action title"
               id={titleID}
               value={this.props.name}
+              onChange={this.handleTitleChange}
             />
           </label>
 
           <button
+            className="action__delete"
             onClick={this.handleDelete}
           >
-            Delete action
+            &times;
           </button>
         </div>
 

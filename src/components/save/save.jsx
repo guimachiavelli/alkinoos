@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './save.scss';
+
 class Save extends React.Component {
   constructor() {
     super();
@@ -21,7 +23,14 @@ class Save extends React.Component {
 
   render() {
     return (
-      <button onClick={this.handleDataSave}>Save</button>
+      <div className="save">
+        <button
+          className="save__button"
+          onClick={this.handleDataSave}
+        >
+          Save
+        </button>
+      </div>
     );
   }
 }
