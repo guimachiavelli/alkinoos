@@ -8,6 +8,14 @@
     box-sizing: border-box;
 }
 
+::selection {
+    background: colour(blue);
+}
+
+::-moz-selection {
+    background: colour(blue);
+}
+
 body {
     font-family: 'Baskerville';
     font-size: font-size(body);

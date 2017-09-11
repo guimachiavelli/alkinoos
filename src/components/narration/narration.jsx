@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './narration.scss';
+
 class Narration extends React.Component {
   constructor() {
     super();

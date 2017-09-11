@@ -1,3 +1,5 @@
+@import '../globals/globals.scss';
+
 .scene__header {
     overflow: hidden;
 }
@@ -15,18 +17,20 @@
 }
 
 .scene__input {
-    display: inline-block;
+    display: block;
     font-size: 70px;
     margin: 0;
-    border: 1px solid black;
+    border: 1px solid colour(lightgrey);
     font-family: 'Baskerville';
     padding: 0.25em;
     width: 100%;
 
-    &:active,
     &:focus {
-        outline: 0;
+        appearance: none;
         -webkit-appearance: none;
+        outline: 0;
+        box-shadow: inset 0 0 0 3px colour(blue);
+        border: 1px solid colour(blue);
     }
 }
 
@@ -37,7 +41,24 @@
     float: right;
     width: 18%;
     font-size: 74px;
-    line-height: 88px;
+    height: 125px;
+    line-height: 0;
     vertical-align: middle;
     padding: 0.25em;
+    display: block;
+    background: colour(lightgrey);
+    color: black;
+    cursor: pointer;
+    text-align: center;
+
+    &:hover {
+        background: colour(darkgrey);
+    }
+
+    &:focus {
+        appearance: none;
+        -webkit-appearance: none;
+        outline: 0;
+        box-shadow: inset 0 0 0 3px colour(blue);
+    }
 }

@@ -80,6 +80,7 @@ class Consequence extends React.Component {
       <li className="consequence">
         <div className="consequence__header">
           <button
+            className="consequence__delete"
             onClick={this.handleDelete}
           >
             &times;

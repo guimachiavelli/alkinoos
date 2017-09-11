@@ -1,3 +1,5 @@
+@import '../globals/globals.scss';
+
 .action {
 }
 
@@ -20,20 +22,45 @@
     display: inline-block;
     font-size: 30px;
     margin: 0;
-    border: 1px solid black;
+    border: 1px solid colour(lightgrey);
     font-family: 'Baskerville';
     padding: 0.25em;
     width: 100%;
     line-height: 30px;
+
+    &:focus {
+        appearance: none;
+        -webkit-appearance: none;
+        outline: 0;
+        box-shadow: inset 0 0 0 3px colour(blue);
+        border: 1px solid colour(blue);
+    }
 }
 
 .action__delete {
     display: inline-block;
+    float: right;
     width: 8%;
     margin-left: 2%;
     font-size: 30px;
-    line-height: 30px;
+    line-height: 0;
     padding: 0.25em;
     height: 54px;
+    vertical-align: middle;
+    background: colour(lightgrey);
+    color: black;
+    cursor: pointer;
+    text-align: center;
+
+    &:hover {
+        background: colour(darkgrey);
+    }
+
+    &:focus {
+        appearance: none;
+        -webkit-appearance: none;
+        outline: 0;
+        box-shadow: inset 0 0 0 3px colour(blue);
+    }
 
 }
