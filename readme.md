@@ -1,6 +1,6 @@
 # Alkinoos
 
-# Overview
+## Overview
 Alkinoos is an interface for generating browser-based interactive fiction stories, in the style of Inkle and Twine. It is in its very early stages of development and will be accompanied by an interactive fiction engine, Arete.
 
 ## Usage
